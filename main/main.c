@@ -1,28 +1,19 @@
 #include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "uart_task.h"
 
 
-   
+  
+
+
 
 
 void app_main(void)
 {
-    printf("My app template!\n");
-    int counter = 0; 
-     while (1)
-    {
-        
-        printf("My app template!\n");
 
-        while(1){
-            printf("counter %d \r\n",counter);
-            vTaskDelay(1000 / portTICK_PERIOD_MS);
-            counter++;
+    xTaskCreate(uart_task, "app_task", 5000, NULL, 10, NULL);
 
 
-        }
-
-    }
 
 }
